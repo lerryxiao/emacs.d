@@ -55,7 +55,12 @@ But you may use safer HTTPS instead.")
     w3m
     erlang
     workgroups2
-    company-c-headers)
+    company-c-headers
+	go-mode
+	go-autocomplete
+	go-errcheck
+	go-eldoc
+	go-impl)
   "Don't install any Melpa packages except these packages")
 
 ;; We include the org repository for completeness, but don't use it.
@@ -80,6 +85,7 @@ But you may use safer HTTPS instead.")
 
 ;; Or Un-comment below line if you install package from https://github.com/redguardtoo/myelpa/
 ;; (setq package-archives '(("myelpa" . "https://raw.github.com/redguardtoo/myelpa/master/")))
+;; (setq package-archives '(("go-mode" . "https://github.com/dominikh/go-mode.el")))
 
 
 
@@ -252,5 +258,11 @@ ARCHIVE is the string name of the package archive.")
 (require-package 'define-word)
 (require-package 'quack) ;; for scheme
 (require-package 'hydra)
+(require-package 'go-mode)
+(require-package 'go-autocomplete)
+(require-package 'go-errcheck)
+(require-package 'go-eldoc)
+(require-package 'go-impl)
+
 
 (provide 'init-elpa)

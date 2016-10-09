@@ -60,7 +60,8 @@ But you may use safer HTTPS instead.")
 	go-autocomplete
 	go-errcheck
 	go-eldoc
-	go-impl)
+	go-impl
+	projectile-direnv)
   "Don't install any Melpa packages except these packages")
 
 ;; We include the org repository for completeness, but don't use it.
@@ -263,6 +264,6 @@ ARCHIVE is the string name of the package archive.")
 (require-package 'go-errcheck)
 (require-package 'go-eldoc)
 (require-package 'go-impl)
-
+(require-package 'projectile-direnv)
 
 (provide 'init-elpa)

@@ -151,12 +151,23 @@
 
   ;; my personal setup, other major-mode specific setup need it.
   ;; It's dependent on init-site-lisp.el
-  (if (file-exists-p "~/emacs.d/.custom.el") (load-file "~/emacs.d/.custom.el"))
+  (if (file-exists-p "~/.custom.el") (load-file "/.custom.el"))
   )
 
 ;; @see https://www.reddit.com/r/emacs/comments/4q4ixw/how_to_forbid_emacs_to_touch_configuration_files/
 (setq custom-file (concat user-emacs-directory "custom-set-variables.el"))
 (load custom-file 'noerror)
+
+;; add by lerry.xiao
+(when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)
+	     (exec-path-from-shell-copy-env "GOPATH"))
+
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
+(add-hook 'projectile-mode-hook 'projectile-direnv-export-variables)
+;; end add by lerry.xiao
 
 (setq gc-cons-threshold best-gc-cons-threshold)
 ;;; Local Variables:

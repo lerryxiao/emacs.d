@@ -34,6 +34,8 @@
   (if (string= "*Messages*" (buffer-name))
       (read-only-mode -1)))
 
+;; start fullscreen
+(toggle-frame-fullscreen)
 ;; @see https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
 ;; Normally file-name-handler-alist is set to
 ;; (("\\`/[^/]*\\'" . tramp-completion-file-name-handler)
@@ -130,6 +132,9 @@
 
   (require 'init-emacs-w3m)
   (require 'init-hydra)
+  (require 'init-semantic)
+  (require 'cedet)
+  (require 'go-direx)
 
   ;; {{ idle require other stuff
   (setq idle-require-idle-delay 2)
@@ -140,8 +145,7 @@
                                init-writting
                                init-pomodoro
                                init-emacspeak
-                               init-artbollocks-mode
-                               init-semantic))
+                               init-artbollocks-mode))
   (idle-require-mode 1) ;; starts loading
   ;; }}
 
@@ -151,8 +155,7 @@
 
   ;; my personal setup, other major-mode specific setup need it.
   ;; It's dependent on init-site-lisp.el
-  (if (file-exists-p "~/.custom.el") (load-file "/.custom.el"))
-  )
+  (if (file-exists-p "~/.custom.el") (load-file "/.custom.el")))
 
 ;; @see https://www.reddit.com/r/emacs/comments/4q4ixw/how_to_forbid_emacs_to_touch_configuration_files/
 (setq custom-file (concat user-emacs-directory "custom-set-variables.el"))
@@ -169,8 +172,17 @@
 (add-hook 'projectile-mode-hook 'projectile-direnv-export-variables)
 ;; end add by lerry.xiao
 
+(require 'chinese-fonts-setup)
+;; 让 chinese-fonts-setup 随着 emacs 自动生效。
+;; (chinese-fonts-setup-enable)
+;; 让 spacemacs mode-line 中的 Unicode 图标正确显示。
+;; (cfs-set-spacemacs-fallback-fonts)
+
+;; make whitespace-mode use just basic coloring
+(setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark indentation::space)))
 (setq gc-cons-threshold best-gc-cons-threshold)
 ;;; Local Variables:
 ;;; no-byte-compile: t
 ;;; End:
 (put 'erase-buffer 'disabled nil)
+

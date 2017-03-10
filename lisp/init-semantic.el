@@ -2,8 +2,10 @@
   '(progn
      ;; any other config specific to sql
      (defun my-semantic-hook ()
-       (semantic-add-system-include "/usr/include/wx-2.8" 'c++-mode)
-       (semantic-add-system-include "/usr/include/wx-2.8/wx/gtk" 'c++-mode)
+        (semantic-mode t)
+        (global-ede-mode t)
+        (semantic-add-system-include "/usr/include" 'c++-mode)
+        (semantic-add-system-include "/usr/local/include" 'c++-mode)
        )
      (add-hook 'semantic-init-hooks 'my-semantic-hook)
      ))

@@ -90,7 +90,6 @@
   (require 'init-css)
   (require 'init-python-mode)
   (require 'init-haskell)
-  (require 'init-ruby-mode)
   (require 'init-lisp)
   (require 'init-elisp)
   (require 'init-yasnippet)
